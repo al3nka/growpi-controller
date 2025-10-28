@@ -1,0 +1,16 @@
+# Core
+fastapi==0.120
+uvicorn[standard]==0.38
+
+# Raspberry Pi hardware control
+RPi.GPIO==0.7.1
+
+# Data & validation
+pydantic==2.12
+
+# Database / state persistence
+SQLAlchemy==2.0.44
+
+# Testing
+pytest==8.4
+pytest-mock==3.15
