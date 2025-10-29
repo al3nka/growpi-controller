@@ -19,11 +19,14 @@ logging.basicConfig(
 
 init_db()
 
-pump_contoller = GPIOPumpController(control_pin=2)
+pump_controller_2 = GPIOPumpController(control_pin=2)
+pump_controller_3 = GPIOPumpController(control_pin=3)
 
-state_manager.save_device(DeviceType.PUMP, pump_contoller.control_pin)
+state_manager.save_device(DeviceType.PUMP, pump_controller_2.control_pin)
+state_manager.save_device(DeviceType.PUMP, pump_controller_3.control_pin)
 controllers = {
-    f"{DeviceType.PUMP}_{pump_contoller.control_pin}": GPIOPumpController(control_pin=2),
+    f"{DeviceType.PUMP}_{pump_controller_2.control_pin}": pump_controller_2,
+    f"{DeviceType.PUMP}_{pump_controller_3.control_pin}": pump_controller_3,
 }
 
 # Initialize and start device runner
