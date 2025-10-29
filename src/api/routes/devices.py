@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from src.state.db import get_session
-from src.state.models.device_state import Device
-from src.api.schemas import DeviceOut
+from state.db import get_session
+from state.models.device_state import Device
+from api.schemas import DeviceOut
 
 router = APIRouter()
 
