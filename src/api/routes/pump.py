@@ -3,7 +3,7 @@ from fastapi import APIRouter
 from state.container import state_manager
 from constants import DeviceType, DeviceState
 
-pump_router = APIRouter(prefix="/pump", tags=["pump"])
+router = APIRouter(prefix="/pump", tags=["pump"])
 
 
 @pump_router.post("/{pin}/start")

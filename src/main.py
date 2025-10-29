@@ -3,7 +3,8 @@ import threading
 
 from fastapi import FastAPI
 
-from api.routes.pump import pump_router
+from api.routes import pump
+from api.routes import devices
 from controller.gpio_pump_controller import GPIOPumpController
 from controller.runner import DeviceRunner
 from state.container import state_manager
@@ -18,11 +19,11 @@ logging.basicConfig(
 
 init_db()
 
-pump = GPIOPumpController(control_pin=2)
+pump_contoller = GPIOPumpController(control_pin=2)
 
-state_manager.save_device(DeviceType.PUMP, pump.control_pin)
+state_manager.save_device(DeviceType.PUMP, pump_contoller.control_pin)
 controllers = {
-    f"{DeviceType.PUMP}_{pump.control_pin}": GPIOPumpController(control_pin=2),
+    f"{DeviceType.PUMP}_{pump_contoller.control_pin}": GPIOPumpController(control_pin=2),
 }
 
 # Initialize and start device runner
@@ -31,4 +32,5 @@ runner_thread = threading.Thread(target=runner.start, daemon=True)
 runner_thread.start()
 
 app = FastAPI(title="Growbox API")
-app.include_router(pump_router)
+app.include_router(pump.router)
+app.include_router(devices.router)
