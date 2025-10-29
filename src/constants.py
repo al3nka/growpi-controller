@@ -8,5 +8,5 @@ class DeviceState(PyEnum):
 
 
 class DeviceType(PyEnum):
-    LAMP = "LAMP"
-    PUMP = "PUMP"
+    LAMP = "lamp"
+    PUMP = "pump"
