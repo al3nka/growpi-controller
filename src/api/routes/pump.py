@@ -18,4 +18,5 @@ def stop_pump(pin: int):
 
 @pump_router.get("/pump/{pin}")
 def pin_status(pin: int):
-    state_manager.load_device(type=DeviceType.PUMP, pin=pin)
+    pin_state_values = state_manager.load_device(type=DeviceType.PUMP, pin=pin)
+    return {"state": pin_state_values.state}
